@@ -31,6 +31,7 @@ namespace BOOK.Models
         public int MaCD { get; set; }
         public int MaNXB { get; set; }
         public int MaTG { get; set; }
+        public Nullable<int> tmp { get; set; }
     
         public virtual ICollection<CHITIETDONDATHANG> CHITIETDONDATHANGs { get; set; }
         public virtual CHUDE CHUDE { get; set; }

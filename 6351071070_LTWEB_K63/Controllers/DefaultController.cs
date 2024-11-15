@@ -4,13 +4,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using PagedList;
+using PagedList.Mvc;
 
 namespace BOOK.Controllers
 {
     public class DefaultController : Controller
     {
 
-        QlsachEntities data = new QlsachEntities();
+        QlsachEntities10 data = new QlsachEntities10();
         // GET: Default
 
         private List<SACH> Laysachmoi(int count)
@@ -19,12 +21,14 @@ namespace BOOK.Controllers
             return data.SACHes.OrderByDescending(a => a.NgayCapNhat).Take(count).ToList();
         }
 
-        public ActionResult Index()
+        public ActionResult Index( int ? page)
         {
+            int pageSize = 4;
+            int pageNum = (page ?? 1);
             // Retrieve the 5 latest books
             var sachmoi = Laysachmoi(20);
 
-            return View(sachmoi);
+            return View(sachmoi.ToPagedList(pageNum, pageSize));
         }
 
 
@@ -69,5 +73,6 @@ namespace BOOK.Controllers
             
 
         }
+
     }
 }

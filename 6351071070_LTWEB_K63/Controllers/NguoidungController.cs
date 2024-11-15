@@ -11,7 +11,7 @@ namespace BOOK.Controllers
     public class NguoidungController : Controller
     {
         // GET: Nguoidung
-        QlsachEntities db = new QlsachEntities();
+        QlsachEntities10 db = new QlsachEntities10();
         public ActionResult Index()
         {
             return View();

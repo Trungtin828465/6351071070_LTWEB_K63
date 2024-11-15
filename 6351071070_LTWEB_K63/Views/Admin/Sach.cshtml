@@ -1,0 +1,167 @@
+﻿@*@model IEnumerable<BOOK.Models.SACH>*@
+@using PagedList.Mvc;
+@using BOOK.Models;
+@model PagedList.PagedList<BOOK.Models.SACH>
+
+@helper Trungcate(string input, int length) { 
+    if(input.Length < length)
+    {
+    @input
+    }
+    else
+    {
+        @input.Substring(0, length)<text>...</text>
+    }
+}
+@{
+    ViewBag.Title = "Sach";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<style>
+    .table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+        .table th, .table td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+            font-size:14px;
+        }
+
+        .table th {
+            background-color: rgb(212, 229, 232);
+        }
+</style>
+
+<h2>Thông tin quản lý sách</h2>
+
+<p>
+    @Html.ActionLink("Thêm mới sách", "Themmoisach")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.First().MaSach)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().TenSach)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().GiaBan)
+        </th>
+        <th style="width:150px">
+            @Html.DisplayNameFor(model => model.First().MoTa)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().AnhBia)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().NgayCapNhat)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().SoLuongTon)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().MaCD)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().MaNXB)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().MaTG)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaSach)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TenSach)
+            </td>
+            <td>
+             
+
+                @Html.DisplayFor(modelItem => item.GiaBan)
+            </td>
+            <td style="width:150px">
+                @Trungcate(item.MoTa, 100)
+                @*@Html.DisplayFor(modelItem => item.MoTa)*@
+            </td>
+            <td>
+                @*<img style="width:40px; height:30px" src="~/Content/img/@item.CHUDE.TenChuDe/@item.TenSach/@item.AnhBia" />*@
+                <img style="width:40px; height:30px" src="~/HinhSanPham/@item.AnhBia" />
+
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NgayCapNhat)
+            </td>
+            <td >
+                @Html.DisplayFor(modelItem => item.SoLuongTon)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CHUDE.TenChuDe)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NHAXUATBAN.TenNXB)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TACGIA.TenTG)
+            </td>
+            <td style="width:100px">
+                @Html.ActionLink("Sửa", "Suasach", new { id = item.MaSach }) |
+                <br />
+                @Html.ActionLink("Chi tiết", "Chitietsach", new { id = item.MaSach }) |
+                <br />
+                @Html.ActionLink("Xóa", "Xoasach", new { id = item.MaSach })
+            </td>
+        </tr>
+    }
+
+
+</table>
+  Trang @(Model.PageCount<Model.PageNumber ? 0 : Model.PageNumber)/ @Model.PageCount
+<div class="MenuTrang">
+    @Html.PagedListPager(Model, page => Url.Action("Sach", new { page = page }))
+</div>
+
+<style>
+    .MenuTrang {
+        margin-top: 15px;
+    }
+
+        .MenuTrang li {
+            display: inline-block; /* Sử dụng inline-block để dễ dàng đặt kích thước */
+        }
+
+        .MenuTrang a,
+        .MenuTrang span {
+            display: inline-block;
+            width: 38px;
+            height: 30px;
+            line-height: 30px; /* Canh giữa theo chiều dọc */
+            text-align: center;
+            background-color: #28a745; /* Màu xanh lá */
+            color: #fff; /* Màu chữ trắng */
+            border-radius: 5px; /* Bo góc */
+            margin: 0 5px; /* Khoảng cách giữa các ô */
+            text-decoration: none; /* Bỏ gạch chân */
+            transition: background-color 0.3s ease; /* Hiệu ứng mượt khi hover */
+        }
+
+            /* Hiệu ứng hover */
+            .MenuTrang a:hover {
+                background-color: rgb(120, 183, 82); /* Màu xanh lá đậm hơn khi hover */
+            }
+
+        /* Đánh dấu trang hiện tại */
+        .MenuTrang .active {
+            background-color: rgb(132, 206, 132); /* Màu xanh lá đậm cho trang hiện tại */
+            cursor: default; /* Không cho phép click */
+        }
+</style>

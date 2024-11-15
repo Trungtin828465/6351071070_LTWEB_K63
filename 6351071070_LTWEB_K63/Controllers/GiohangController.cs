@@ -12,7 +12,7 @@ namespace BOOK.Controllers
         // GET: Giohang
 
         //Tao doi tuong data chua du lieu tu model dbBansach da tao
-        QlsachEntities data = new QlsachEntities();
+        QlsachEntities10 data = new QlsachEntities10();
         //Lay gio hang
         //public List<Giohang> Laygiohang()
         //{

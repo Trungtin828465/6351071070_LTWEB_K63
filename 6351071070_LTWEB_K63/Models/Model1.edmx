@@ -5,6 +5,15 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
       <Schema Namespace="QlsachModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Admin">
+          <Key>
+            <PropertyRef Name="AdminID" />
+          </Key>
+          <Property Name="AdminID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserAdmin" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PasswordAdmin" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="HotenAdmin" Type="nvarchar" MaxLength="255" Nullable="false" />
+        </EntityType>
         <EntityType Name="CHITIETDONDATHANG">
           <Key>
             <PropertyRef Name="MaDonHang" />
@@ -77,6 +86,7 @@
           <Property Name="MaCD" Type="int" Nullable="false" />
           <Property Name="MaNXB" Type="int" Nullable="false" />
           <Property Name="MaTG" Type="int" Nullable="false" />
+          <Property Name="tmp" Type="int" />
         </EntityType>
         <EntityType Name="TACGIA">
           <Key>
@@ -97,7 +107,7 @@
           <Property Name="MaSach" Type="int" Nullable="false" />
           <Property Name="VaiTro" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
-        <Association Name="FK__CHITIETDO__MaDon__46E78A0C">
+        <Association Name="FK__CHITIETDO__MaDon__47DBAE45">
           <End Role="DONDATHANG" Type="Self.DONDATHANG" Multiplicity="1" />
           <End Role="CHITIETDONDATHANG" Type="Self.CHITIETDONDATHANG" Multiplicity="*" />
           <ReferentialConstraint>
@@ -109,7 +119,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CHITIETDO__MaSac__47DBAE45">
+        <Association Name="FK__CHITIETDO__MaSac__48CFD27E">
           <End Role="SACH" Type="Self.SACH" Multiplicity="1" />
           <End Role="CHITIETDONDATHANG" Type="Self.CHITIETDONDATHANG" Multiplicity="*" />
           <ReferentialConstraint>
@@ -121,7 +131,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__DONDATHANG__MaKH__440B1D61">
+        <Association Name="FK__DONDATHANG__MaKH__44FF419A">
           <End Role="KHACHHANG" Type="Self.KHACHHANG" Multiplicity="1" />
           <End Role="DONDATHANG" Type="Self.DONDATHANG" Multiplicity="*" />
           <ReferentialConstraint>
@@ -133,7 +143,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__MoTa__MaSach__4E88ABD4">
+        <Association Name="FK__MoTa__MaSach__4F7CD00D">
           <End Role="SACH" Type="Self.SACH" Multiplicity="1" />
           <End Role="MoTa" Type="Self.MoTa" Multiplicity="*" />
           <ReferentialConstraint>
@@ -145,7 +155,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__SACH__MaCD__3D5E1FD2">
+        <Association Name="FK__SACH__MaCD__3E52440B">
           <End Role="CHUDE" Type="Self.CHUDE" Multiplicity="1" />
           <End Role="SACH" Type="Self.SACH" Multiplicity="*" />
           <ReferentialConstraint>
@@ -157,7 +167,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__SACH__MaNXB__3E52440B">
+        <Association Name="FK__SACH__MaNXB__3F466844">
           <End Role="NHAXUATBAN" Type="Self.NHAXUATBAN" Multiplicity="1" />
           <End Role="SACH" Type="Self.SACH" Multiplicity="*" />
           <ReferentialConstraint>
@@ -169,7 +179,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__SACH__MaTG__3F466844">
+        <Association Name="FK__SACH__MaTG__403A8C7D">
           <End Role="TACGIA" Type="Self.TACGIA" Multiplicity="1" />
           <End Role="SACH" Type="Self.SACH" Multiplicity="*" />
           <ReferentialConstraint>
@@ -181,7 +191,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__VIETSACH__MaSach__4BAC3F29">
+        <Association Name="FK__VIETSACH__MaSach__4CA06362">
           <End Role="SACH" Type="Self.SACH" Multiplicity="1" />
           <End Role="VIETSACH" Type="Self.VIETSACH" Multiplicity="*" />
           <ReferentialConstraint>
@@ -193,7 +203,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__VIETSACH__MaTG__4AB81AF0">
+        <Association Name="FK__VIETSACH__MaTG__4BAC3F29">
           <End Role="TACGIA" Type="Self.TACGIA" Multiplicity="1" />
           <End Role="VIETSACH" Type="Self.VIETSACH" Multiplicity="*" />
           <ReferentialConstraint>
@@ -206,6 +216,7 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="QlsachModelStoreContainer">
+          <EntitySet Name="Admin" EntityType="Self.Admin" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CHITIETDONDATHANG" EntityType="Self.CHITIETDONDATHANG" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CHUDE" EntityType="Self.CHUDE" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DONDATHANG" EntityType="Self.DONDATHANG" Schema="dbo" store:Type="Tables" />
@@ -215,39 +226,39 @@
           <EntitySet Name="SACH" EntityType="Self.SACH" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TACGIA" EntityType="Self.TACGIA" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="VIETSACH" EntityType="Self.VIETSACH" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__CHITIETDO__MaDon__46E78A0C" Association="Self.FK__CHITIETDO__MaDon__46E78A0C">
+          <AssociationSet Name="FK__CHITIETDO__MaDon__47DBAE45" Association="Self.FK__CHITIETDO__MaDon__47DBAE45">
             <End Role="DONDATHANG" EntitySet="DONDATHANG" />
             <End Role="CHITIETDONDATHANG" EntitySet="CHITIETDONDATHANG" />
           </AssociationSet>
-          <AssociationSet Name="FK__CHITIETDO__MaSac__47DBAE45" Association="Self.FK__CHITIETDO__MaSac__47DBAE45">
+          <AssociationSet Name="FK__CHITIETDO__MaSac__48CFD27E" Association="Self.FK__CHITIETDO__MaSac__48CFD27E">
             <End Role="SACH" EntitySet="SACH" />
             <End Role="CHITIETDONDATHANG" EntitySet="CHITIETDONDATHANG" />
           </AssociationSet>
-          <AssociationSet Name="FK__DONDATHANG__MaKH__440B1D61" Association="Self.FK__DONDATHANG__MaKH__440B1D61">
+          <AssociationSet Name="FK__DONDATHANG__MaKH__44FF419A" Association="Self.FK__DONDATHANG__MaKH__44FF419A">
             <End Role="KHACHHANG" EntitySet="KHACHHANG" />
             <End Role="DONDATHANG" EntitySet="DONDATHANG" />
           </AssociationSet>
-          <AssociationSet Name="FK__MoTa__MaSach__4E88ABD4" Association="Self.FK__MoTa__MaSach__4E88ABD4">
+          <AssociationSet Name="FK__MoTa__MaSach__4F7CD00D" Association="Self.FK__MoTa__MaSach__4F7CD00D">
             <End Role="SACH" EntitySet="SACH" />
             <End Role="MoTa" EntitySet="MoTa" />
           </AssociationSet>
-          <AssociationSet Name="FK__SACH__MaCD__3D5E1FD2" Association="Self.FK__SACH__MaCD__3D5E1FD2">
+          <AssociationSet Name="FK__SACH__MaCD__3E52440B" Association="Self.FK__SACH__MaCD__3E52440B">
             <End Role="CHUDE" EntitySet="CHUDE" />
             <End Role="SACH" EntitySet="SACH" />
           </AssociationSet>
-          <AssociationSet Name="FK__SACH__MaNXB__3E52440B" Association="Self.FK__SACH__MaNXB__3E52440B">
+          <AssociationSet Name="FK__SACH__MaNXB__3F466844" Association="Self.FK__SACH__MaNXB__3F466844">
             <End Role="NHAXUATBAN" EntitySet="NHAXUATBAN" />
             <End Role="SACH" EntitySet="SACH" />
           </AssociationSet>
-          <AssociationSet Name="FK__SACH__MaTG__3F466844" Association="Self.FK__SACH__MaTG__3F466844">
+          <AssociationSet Name="FK__SACH__MaTG__403A8C7D" Association="Self.FK__SACH__MaTG__403A8C7D">
             <End Role="TACGIA" EntitySet="TACGIA" />
             <End Role="SACH" EntitySet="SACH" />
           </AssociationSet>
-          <AssociationSet Name="FK__VIETSACH__MaSach__4BAC3F29" Association="Self.FK__VIETSACH__MaSach__4BAC3F29">
+          <AssociationSet Name="FK__VIETSACH__MaSach__4CA06362" Association="Self.FK__VIETSACH__MaSach__4CA06362">
             <End Role="SACH" EntitySet="SACH" />
             <End Role="VIETSACH" EntitySet="VIETSACH" />
           </AssociationSet>
-          <AssociationSet Name="FK__VIETSACH__MaTG__4AB81AF0" Association="Self.FK__VIETSACH__MaTG__4AB81AF0">
+          <AssociationSet Name="FK__VIETSACH__MaTG__4BAC3F29" Association="Self.FK__VIETSACH__MaTG__4BAC3F29">
             <End Role="TACGIA" EntitySet="TACGIA" />
             <End Role="VIETSACH" EntitySet="VIETSACH" />
           </AssociationSet>
@@ -257,6 +268,15 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="QlsachModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Admin">
+          <Key>
+            <PropertyRef Name="AdminID" />
+          </Key>
+          <Property Name="AdminID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserAdmin" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PasswordAdmin" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="HotenAdmin" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
         <EntityType Name="CHITIETDONDATHANG">
           <Key>
             <PropertyRef Name="MaDonHang" />
@@ -266,8 +286,8 @@
           <Property Name="MaSach" Type="Int32" Nullable="false" />
           <Property Name="SoLuong" Type="Int32" Nullable="false" />
           <Property Name="DonGia" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
-          <NavigationProperty Name="DONDATHANG" Relationship="Self.FK__CHITIETDO__MaDon__46E78A0C" FromRole="CHITIETDONDATHANG" ToRole="DONDATHANG" />
-          <NavigationProperty Name="SACH" Relationship="Self.FK__CHITIETDO__MaSac__47DBAE45" FromRole="CHITIETDONDATHANG" ToRole="SACH" />
+          <NavigationProperty Name="DONDATHANG" Relationship="Self.FK__CHITIETDO__MaDon__47DBAE45" FromRole="CHITIETDONDATHANG" ToRole="DONDATHANG" />
+          <NavigationProperty Name="SACH" Relationship="Self.FK__CHITIETDO__MaSac__48CFD27E" FromRole="CHITIETDONDATHANG" ToRole="SACH" />
         </EntityType>
         <EntityType Name="CHUDE">
           <Key>
@@ -275,7 +295,7 @@
           </Key>
           <Property Name="MaCD" Type="Int32" Nullable="false" />
           <Property Name="TenChuDe" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="SACHes" Relationship="Self.FK__SACH__MaCD__3D5E1FD2" FromRole="CHUDE" ToRole="SACH" />
+          <NavigationProperty Name="SACHes" Relationship="Self.FK__SACH__MaCD__3E52440B" FromRole="CHUDE" ToRole="SACH" />
         </EntityType>
         <EntityType Name="DONDATHANG">
           <Key>
@@ -287,8 +307,8 @@
           <Property Name="NgayLap" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="NgayGiao" Type="DateTime" Precision="0" />
           <Property Name="MaKH" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="CHITIETDONDATHANGs" Relationship="Self.FK__CHITIETDO__MaDon__46E78A0C" FromRole="DONDATHANG" ToRole="CHITIETDONDATHANG" />
-          <NavigationProperty Name="KHACHHANG" Relationship="Self.FK__DONDATHANG__MaKH__440B1D61" FromRole="DONDATHANG" ToRole="KHACHHANG" />
+          <NavigationProperty Name="CHITIETDONDATHANGs" Relationship="Self.FK__CHITIETDO__MaDon__47DBAE45" FromRole="DONDATHANG" ToRole="CHITIETDONDATHANG" />
+          <NavigationProperty Name="KHACHHANG" Relationship="Self.FK__DONDATHANG__MaKH__44FF419A" FromRole="DONDATHANG" ToRole="KHACHHANG" />
         </EntityType>
         <EntityType Name="KHACHHANG">
           <Key>
@@ -302,7 +322,7 @@
           <Property Name="DiaChi" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="DienThoaiKH" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="NgaySinh" Type="DateTime" Nullable="false" Precision="0" />
-          <NavigationProperty Name="DONDATHANGs" Relationship="Self.FK__DONDATHANG__MaKH__440B1D61" FromRole="KHACHHANG" ToRole="DONDATHANG" />
+          <NavigationProperty Name="DONDATHANGs" Relationship="Self.FK__DONDATHANG__MaKH__44FF419A" FromRole="KHACHHANG" ToRole="DONDATHANG" />
         </EntityType>
         <EntityType Name="MoTa">
           <Key>
@@ -311,7 +331,7 @@
           <Property Name="IdMoTa" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="MaSach" Type="Int32" Nullable="false" />
           <Property Name="Mota1" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="SACH" Relationship="Self.FK__MoTa__MaSach__4E88ABD4" FromRole="MoTa" ToRole="SACH" />
+          <NavigationProperty Name="SACH" Relationship="Self.FK__MoTa__MaSach__4F7CD00D" FromRole="MoTa" ToRole="SACH" />
         </EntityType>
         <EntityType Name="NHAXUATBAN">
           <Key>
@@ -321,7 +341,7 @@
           <Property Name="TenNXB" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="DiaChi" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="DienThoai" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="SACHes" Relationship="Self.FK__SACH__MaNXB__3E52440B" FromRole="NHAXUATBAN" ToRole="SACH" />
+          <NavigationProperty Name="SACHes" Relationship="Self.FK__SACH__MaNXB__3F466844" FromRole="NHAXUATBAN" ToRole="SACH" />
         </EntityType>
         <EntityType Name="SACH">
           <Key>
@@ -337,12 +357,13 @@
           <Property Name="MaCD" Type="Int32" Nullable="false" />
           <Property Name="MaNXB" Type="Int32" Nullable="false" />
           <Property Name="MaTG" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="CHITIETDONDATHANGs" Relationship="Self.FK__CHITIETDO__MaSac__47DBAE45" FromRole="SACH" ToRole="CHITIETDONDATHANG" />
-          <NavigationProperty Name="CHUDE" Relationship="Self.FK__SACH__MaCD__3D5E1FD2" FromRole="SACH" ToRole="CHUDE" />
-          <NavigationProperty Name="MoTas" Relationship="Self.FK__MoTa__MaSach__4E88ABD4" FromRole="SACH" ToRole="MoTa" />
-          <NavigationProperty Name="NHAXUATBAN" Relationship="Self.FK__SACH__MaNXB__3E52440B" FromRole="SACH" ToRole="NHAXUATBAN" />
-          <NavigationProperty Name="TACGIA" Relationship="Self.FK__SACH__MaTG__3F466844" FromRole="SACH" ToRole="TACGIA" />
-          <NavigationProperty Name="VIETSACHes" Relationship="Self.FK__VIETSACH__MaSach__4BAC3F29" FromRole="SACH" ToRole="VIETSACH" />
+          <Property Name="tmp" Type="Int32" />
+          <NavigationProperty Name="CHITIETDONDATHANGs" Relationship="Self.FK__CHITIETDO__MaSac__48CFD27E" FromRole="SACH" ToRole="CHITIETDONDATHANG" />
+          <NavigationProperty Name="CHUDE" Relationship="Self.FK__SACH__MaCD__3E52440B" FromRole="SACH" ToRole="CHUDE" />
+          <NavigationProperty Name="MoTas" Relationship="Self.FK__MoTa__MaSach__4F7CD00D" FromRole="SACH" ToRole="MoTa" />
+          <NavigationProperty Name="NHAXUATBAN" Relationship="Self.FK__SACH__MaNXB__3F466844" FromRole="SACH" ToRole="NHAXUATBAN" />
+          <NavigationProperty Name="TACGIA" Relationship="Self.FK__SACH__MaTG__403A8C7D" FromRole="SACH" ToRole="TACGIA" />
+          <NavigationProperty Name="VIETSACHes" Relationship="Self.FK__VIETSACH__MaSach__4CA06362" FromRole="SACH" ToRole="VIETSACH" />
         </EntityType>
         <EntityType Name="TACGIA">
           <Key>
@@ -353,8 +374,8 @@
           <Property Name="DiaChi" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="TieuSu" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="DienThoai" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="SACHes" Relationship="Self.FK__SACH__MaTG__3F466844" FromRole="TACGIA" ToRole="SACH" />
-          <NavigationProperty Name="VIETSACHes" Relationship="Self.FK__VIETSACH__MaTG__4AB81AF0" FromRole="TACGIA" ToRole="VIETSACH" />
+          <NavigationProperty Name="SACHes" Relationship="Self.FK__SACH__MaTG__403A8C7D" FromRole="TACGIA" ToRole="SACH" />
+          <NavigationProperty Name="VIETSACHes" Relationship="Self.FK__VIETSACH__MaTG__4BAC3F29" FromRole="TACGIA" ToRole="VIETSACH" />
         </EntityType>
         <EntityType Name="VIETSACH">
           <Key>
@@ -364,10 +385,10 @@
           <Property Name="MaTG" Type="Int32" Nullable="false" />
           <Property Name="MaSach" Type="Int32" Nullable="false" />
           <Property Name="VaiTro" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="SACH" Relationship="Self.FK__VIETSACH__MaSach__4BAC3F29" FromRole="VIETSACH" ToRole="SACH" />
-          <NavigationProperty Name="TACGIA" Relationship="Self.FK__VIETSACH__MaTG__4AB81AF0" FromRole="VIETSACH" ToRole="TACGIA" />
+          <NavigationProperty Name="SACH" Relationship="Self.FK__VIETSACH__MaSach__4CA06362" FromRole="VIETSACH" ToRole="SACH" />
+          <NavigationProperty Name="TACGIA" Relationship="Self.FK__VIETSACH__MaTG__4BAC3F29" FromRole="VIETSACH" ToRole="TACGIA" />
         </EntityType>
-        <Association Name="FK__CHITIETDO__MaDon__46E78A0C">
+        <Association Name="FK__CHITIETDO__MaDon__47DBAE45">
           <End Role="DONDATHANG" Type="Self.DONDATHANG" Multiplicity="1" />
           <End Role="CHITIETDONDATHANG" Type="Self.CHITIETDONDATHANG" Multiplicity="*" />
           <ReferentialConstraint>
@@ -379,7 +400,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CHITIETDO__MaSac__47DBAE45">
+        <Association Name="FK__CHITIETDO__MaSac__48CFD27E">
           <End Role="SACH" Type="Self.SACH" Multiplicity="1" />
           <End Role="CHITIETDONDATHANG" Type="Self.CHITIETDONDATHANG" Multiplicity="*" />
           <ReferentialConstraint>
@@ -391,7 +412,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__SACH__MaCD__3D5E1FD2">
+        <Association Name="FK__SACH__MaCD__3E52440B">
           <End Role="CHUDE" Type="Self.CHUDE" Multiplicity="1" />
           <End Role="SACH" Type="Self.SACH" Multiplicity="*" />
           <ReferentialConstraint>
@@ -403,7 +424,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__DONDATHANG__MaKH__440B1D61">
+        <Association Name="FK__DONDATHANG__MaKH__44FF419A">
           <End Role="KHACHHANG" Type="Self.KHACHHANG" Multiplicity="1" />
           <End Role="DONDATHANG" Type="Self.DONDATHANG" Multiplicity="*" />
           <ReferentialConstraint>
@@ -415,7 +436,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__MoTa__MaSach__4E88ABD4">
+        <Association Name="FK__MoTa__MaSach__4F7CD00D">
           <End Role="SACH" Type="Self.SACH" Multiplicity="1" />
           <End Role="MoTa" Type="Self.MoTa" Multiplicity="*" />
           <ReferentialConstraint>
@@ -427,7 +448,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__SACH__MaNXB__3E52440B">
+        <Association Name="FK__SACH__MaNXB__3F466844">
           <End Role="NHAXUATBAN" Type="Self.NHAXUATBAN" Multiplicity="1" />
           <End Role="SACH" Type="Self.SACH" Multiplicity="*" />
           <ReferentialConstraint>
@@ -439,7 +460,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__SACH__MaTG__3F466844">
+        <Association Name="FK__SACH__MaTG__403A8C7D">
           <End Role="TACGIA" Type="Self.TACGIA" Multiplicity="1" />
           <End Role="SACH" Type="Self.SACH" Multiplicity="*" />
           <ReferentialConstraint>
@@ -451,7 +472,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__VIETSACH__MaSach__4BAC3F29">
+        <Association Name="FK__VIETSACH__MaSach__4CA06362">
           <End Role="SACH" Type="Self.SACH" Multiplicity="1" />
           <End Role="VIETSACH" Type="Self.VIETSACH" Multiplicity="*" />
           <ReferentialConstraint>
@@ -463,7 +484,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__VIETSACH__MaTG__4AB81AF0">
+        <Association Name="FK__VIETSACH__MaTG__4BAC3F29">
           <End Role="TACGIA" Type="Self.TACGIA" Multiplicity="1" />
           <End Role="VIETSACH" Type="Self.VIETSACH" Multiplicity="*" />
           <ReferentialConstraint>
@@ -475,7 +496,8 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="QlsachEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="QlsachEntities10" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Admins" EntityType="Self.Admin" />
           <EntitySet Name="CHITIETDONDATHANGs" EntityType="Self.CHITIETDONDATHANG" />
           <EntitySet Name="CHUDEs" EntityType="Self.CHUDE" />
           <EntitySet Name="DONDATHANGs" EntityType="Self.DONDATHANG" />
@@ -485,39 +507,39 @@
           <EntitySet Name="SACHes" EntityType="Self.SACH" />
           <EntitySet Name="TACGIAs" EntityType="Self.TACGIA" />
           <EntitySet Name="VIETSACHes" EntityType="Self.VIETSACH" />
-          <AssociationSet Name="FK__CHITIETDO__MaDon__46E78A0C" Association="Self.FK__CHITIETDO__MaDon__46E78A0C">
+          <AssociationSet Name="FK__CHITIETDO__MaDon__47DBAE45" Association="Self.FK__CHITIETDO__MaDon__47DBAE45">
             <End Role="DONDATHANG" EntitySet="DONDATHANGs" />
             <End Role="CHITIETDONDATHANG" EntitySet="CHITIETDONDATHANGs" />
           </AssociationSet>
-          <AssociationSet Name="FK__CHITIETDO__MaSac__47DBAE45" Association="Self.FK__CHITIETDO__MaSac__47DBAE45">
+          <AssociationSet Name="FK__CHITIETDO__MaSac__48CFD27E" Association="Self.FK__CHITIETDO__MaSac__48CFD27E">
             <End Role="SACH" EntitySet="SACHes" />
             <End Role="CHITIETDONDATHANG" EntitySet="CHITIETDONDATHANGs" />
           </AssociationSet>
-          <AssociationSet Name="FK__SACH__MaCD__3D5E1FD2" Association="Self.FK__SACH__MaCD__3D5E1FD2">
+          <AssociationSet Name="FK__SACH__MaCD__3E52440B" Association="Self.FK__SACH__MaCD__3E52440B">
             <End Role="CHUDE" EntitySet="CHUDEs" />
             <End Role="SACH" EntitySet="SACHes" />
           </AssociationSet>
-          <AssociationSet Name="FK__DONDATHANG__MaKH__440B1D61" Association="Self.FK__DONDATHANG__MaKH__440B1D61">
+          <AssociationSet Name="FK__DONDATHANG__MaKH__44FF419A" Association="Self.FK__DONDATHANG__MaKH__44FF419A">
             <End Role="KHACHHANG" EntitySet="KHACHHANGs" />
             <End Role="DONDATHANG" EntitySet="DONDATHANGs" />
           </AssociationSet>
-          <AssociationSet Name="FK__MoTa__MaSach__4E88ABD4" Association="Self.FK__MoTa__MaSach__4E88ABD4">
+          <AssociationSet Name="FK__MoTa__MaSach__4F7CD00D" Association="Self.FK__MoTa__MaSach__4F7CD00D">
             <End Role="SACH" EntitySet="SACHes" />
             <End Role="MoTa" EntitySet="MoTas" />
           </AssociationSet>
-          <AssociationSet Name="FK__SACH__MaNXB__3E52440B" Association="Self.FK__SACH__MaNXB__3E52440B">
+          <AssociationSet Name="FK__SACH__MaNXB__3F466844" Association="Self.FK__SACH__MaNXB__3F466844">
             <End Role="NHAXUATBAN" EntitySet="NHAXUATBANs" />
             <End Role="SACH" EntitySet="SACHes" />
           </AssociationSet>
-          <AssociationSet Name="FK__SACH__MaTG__3F466844" Association="Self.FK__SACH__MaTG__3F466844">
+          <AssociationSet Name="FK__SACH__MaTG__403A8C7D" Association="Self.FK__SACH__MaTG__403A8C7D">
             <End Role="TACGIA" EntitySet="TACGIAs" />
             <End Role="SACH" EntitySet="SACHes" />
           </AssociationSet>
-          <AssociationSet Name="FK__VIETSACH__MaSach__4BAC3F29" Association="Self.FK__VIETSACH__MaSach__4BAC3F29">
+          <AssociationSet Name="FK__VIETSACH__MaSach__4CA06362" Association="Self.FK__VIETSACH__MaSach__4CA06362">
             <End Role="SACH" EntitySet="SACHes" />
             <End Role="VIETSACH" EntitySet="VIETSACHes" />
           </AssociationSet>
-          <AssociationSet Name="FK__VIETSACH__MaTG__4AB81AF0" Association="Self.FK__VIETSACH__MaTG__4AB81AF0">
+          <AssociationSet Name="FK__VIETSACH__MaTG__4BAC3F29" Association="Self.FK__VIETSACH__MaTG__4BAC3F29">
             <End Role="TACGIA" EntitySet="TACGIAs" />
             <End Role="VIETSACH" EntitySet="VIETSACHes" />
           </AssociationSet>
@@ -527,7 +549,17 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="QlsachModelStoreContainer" CdmEntityContainer="QlsachEntities">
+        <EntityContainerMapping StorageEntityContainer="QlsachModelStoreContainer" CdmEntityContainer="QlsachEntities10">
+          <EntitySetMapping Name="Admins">
+            <EntityTypeMapping TypeName="QlsachModel.Admin">
+              <MappingFragment StoreEntitySet="Admin">
+                <ScalarProperty Name="AdminID" ColumnName="AdminID" />
+                <ScalarProperty Name="UserAdmin" ColumnName="UserAdmin" />
+                <ScalarProperty Name="PasswordAdmin" ColumnName="PasswordAdmin" />
+                <ScalarProperty Name="HotenAdmin" ColumnName="HotenAdmin" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="CHITIETDONDATHANGs">
             <EntityTypeMapping TypeName="QlsachModel.CHITIETDONDATHANG">
               <MappingFragment StoreEntitySet="CHITIETDONDATHANG">
@@ -604,6 +636,7 @@
                 <ScalarProperty Name="MaCD" ColumnName="MaCD" />
                 <ScalarProperty Name="MaNXB" ColumnName="MaNXB" />
                 <ScalarProperty Name="MaTG" ColumnName="MaTG" />
+                <ScalarProperty Name="tmp" ColumnName="tmp" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

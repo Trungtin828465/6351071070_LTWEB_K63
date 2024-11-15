@@ -13,10 +13,10 @@ namespace BOOK.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class QlsachEntities : DbContext
+    public partial class QlsachEntities10 : DbContext
     {
-        public QlsachEntities()
-            : base("name=QlsachEntities")
+        public QlsachEntities10()
+            : base("name=QlsachEntities10")
         {
         }
     
@@ -25,6 +25,7 @@ namespace BOOK.Models
             throw new UnintentionalCodeFirstException();
         }
     
+        public DbSet<Admin> Admins { get; set; }
         public DbSet<CHITIETDONDATHANG> CHITIETDONDATHANGs { get; set; }
         public DbSet<CHUDE> CHUDEs { get; set; }
         public DbSet<DONDATHANG> DONDATHANGs { get; set; }

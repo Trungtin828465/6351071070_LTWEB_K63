@@ -8,7 +8,7 @@ namespace BOOK.Models
     public class Giohang
     {
         // Tạo đối tượng data chứa dữ liệu từ model dbBansach đã tạo.
-        QlsachEntities data = new QlsachEntities();
+        QlsachEntities10 data = new QlsachEntities10();
 
         public int iMasach { get; set; }
         public string sTensach { get; set; }

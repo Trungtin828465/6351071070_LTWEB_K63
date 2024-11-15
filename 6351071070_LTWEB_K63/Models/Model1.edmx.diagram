@@ -4,25 +4,26 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="db97b0fda6674487840d40ad1724e812" Name="Diagram1">
+      <Diagram DiagramId="0c25c4ea3f5049daa98d3c7762b18d49" Name="Diagram1">
+        <EntityTypeShape EntityType="QlsachModel.Admin" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="QlsachModel.CHITIETDONDATHANG" Width="1.5" PointX="5.25" PointY="3.875" IsExpanded="true" />
         <EntityTypeShape EntityType="QlsachModel.CHUDE" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="QlsachModel.DONDATHANG" Width="1.5" PointX="3" PointY="10.625" IsExpanded="true" />
         <EntityTypeShape EntityType="QlsachModel.KHACHHANG" Width="1.5" PointX="0.75" PointY="10.5" IsExpanded="true" />
         <EntityTypeShape EntityType="QlsachModel.MoTa" Width="1.5" PointX="5.25" PointY="7" IsExpanded="true" />
         <EntityTypeShape EntityType="QlsachModel.NHAXUATBAN" Width="1.5" PointX="0.75" PointY="7.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="QlsachModel.SACH" Width="1.5" PointX="3" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="QlsachModel.SACH" Width="1.5" PointX="3" PointY="2.75" IsExpanded="true" />
         <EntityTypeShape EntityType="QlsachModel.TACGIA" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="QlsachModel.VIETSACH" Width="1.5" PointX="5.25" PointY="0.875" IsExpanded="true" />
-        <AssociationConnector Association="QlsachModel.FK__CHITIETDO__MaDon__46E78A0C" ManuallyRouted="false" />
-        <AssociationConnector Association="QlsachModel.FK__CHITIETDO__MaSac__47DBAE45" ManuallyRouted="false" />
-        <AssociationConnector Association="QlsachModel.FK__SACH__MaCD__3D5E1FD2" ManuallyRouted="false" />
-        <AssociationConnector Association="QlsachModel.FK__DONDATHANG__MaKH__440B1D61" ManuallyRouted="false" />
-        <AssociationConnector Association="QlsachModel.FK__MoTa__MaSach__4E88ABD4" ManuallyRouted="false" />
-        <AssociationConnector Association="QlsachModel.FK__SACH__MaNXB__3E52440B" ManuallyRouted="false" />
-        <AssociationConnector Association="QlsachModel.FK__SACH__MaTG__3F466844" ManuallyRouted="false" />
-        <AssociationConnector Association="QlsachModel.FK__VIETSACH__MaSach__4BAC3F29" ManuallyRouted="false" />
-        <AssociationConnector Association="QlsachModel.FK__VIETSACH__MaTG__4AB81AF0" ManuallyRouted="false" />
+        <AssociationConnector Association="QlsachModel.FK__CHITIETDO__MaDon__47DBAE45" ManuallyRouted="false" />
+        <AssociationConnector Association="QlsachModel.FK__CHITIETDO__MaSac__48CFD27E" ManuallyRouted="false" />
+        <AssociationConnector Association="QlsachModel.FK__SACH__MaCD__3E52440B" ManuallyRouted="false" />
+        <AssociationConnector Association="QlsachModel.FK__DONDATHANG__MaKH__44FF419A" ManuallyRouted="false" />
+        <AssociationConnector Association="QlsachModel.FK__MoTa__MaSach__4F7CD00D" ManuallyRouted="false" />
+        <AssociationConnector Association="QlsachModel.FK__SACH__MaNXB__3F466844" ManuallyRouted="false" />
+        <AssociationConnector Association="QlsachModel.FK__SACH__MaTG__403A8C7D" ManuallyRouted="false" />
+        <AssociationConnector Association="QlsachModel.FK__VIETSACH__MaSach__4CA06362" ManuallyRouted="false" />
+        <AssociationConnector Association="QlsachModel.FK__VIETSACH__MaTG__4BAC3F29" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
